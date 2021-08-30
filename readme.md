@@ -27,8 +27,7 @@ The used RNG is the MT19937 from `<Random.h>`.
 
 ### Requirements
 1. CMake https://cmake.org/install/
-2. Armadillo http://arma.sourceforge.net/download.html
-3. Matplotlib-cpp from https://github.com/lava/matplotlib-cpp
+2. MATLAB for post-analysis
 
 ### How to compile?
 This is a **CMake-Project**. Compilation and building is pretty easy. Simply run in main folder via terminal:
