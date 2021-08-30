@@ -3,7 +3,6 @@
 //
 #include <cmath>
 #include <iostream>
-#include <string>
 #include <thread>
 
 #include "Euclidean2DGraph.h"
@@ -22,11 +21,11 @@ void runCalcSpectralDimension(const std::string &filePrefix, const uint_fast64_t
     std::cout << amountOfThreads << " threads will be used for calculation." << std::endl;
 
     std::vector<std::thread> threads(amountOfThreads - 1);
-    std::vector<T *> arrWalkableGraph(amountOfThreads);
+    std::vector<T*> arrWalkableGraph(amountOfThreads);
     for (unsigned int i = 0; i < threads.size(); i++) {
         arrWalkableGraph[i] = new T(filePrefix + std::to_string(i) + ".tsv");
         threads[i] = std::thread(
-                [=](T *walkableGraph) { walkableGraph->stepsToReturn(iterationsPerThread, maxSteps); },
+                [=](T* walkableGraph) { walkableGraph->stepsToReturn(iterationsPerThread, maxSteps); },
                 arrWalkableGraph[i]);
     }
 
@@ -39,13 +38,16 @@ void runCalcSpectralDimension(const std::string &filePrefix, const uint_fast64_t
 }
 
 void inputWalkParameters(uint_fast64_t &amountOfWalks, uint_fast64_t &maxSteps) {
-    std::cout << "How many walkers should be observed at all? (Input power to 10. for example 6 for 1E6 walkers) Max is 16:" << std::endl;
+    std::cout
+            << "How many walkers should be observed at all? (Input power to 10. for example 6 for 1E6 walkers) Max is 16:"
+            << std::endl;
     std::cin >> amountOfWalks;
-    amountOfWalks = static_cast<uint_fast64_t>(pow(10, amountOfWalks));
-    std::cout << "How many steps should the walkers be allowed to travel?(Input power to 10. For example 6 for 1E6 steps) Max is 16:"
-              << std::endl;
+    amountOfWalks = static_cast<uint_fast64_t>(std::pow(10, amountOfWalks));
+    std::cout
+            << "How many steps should the walkers be allowed to travel?(Input power to 10. For example 6 for 1E6 steps) Max is 16:"
+            << std::endl;
     std::cin >> maxSteps;
-    maxSteps = static_cast<uint_fast64_t>(pow(10, maxSteps));
+    maxSteps = static_cast<uint_fast64_t>(std::pow(10, maxSteps));
 }
 
 int main() {

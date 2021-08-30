@@ -35,6 +35,6 @@ void Euclidean2DGraph::hopToNeighbour(unsigned int n) {
             break;
         default:
             std::cerr << "Index " << n << " of this neighbour is too high! (Euclidean2D:  0<=n<4)" << std::endl;
-            exit(10);
+            exit(1);
     }
 }

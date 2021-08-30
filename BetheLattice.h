@@ -34,7 +34,7 @@ void BetheLattice::hopToNeighbour(unsigned int n) {
             loc[0]--;
         } else {
             std::cerr << "Index " << n << " of this neighbour is too high! (BetheLattice:  0<=n<3)" << std::endl;
-            exit(10);
+            exit(1);
         }
     }
 }
